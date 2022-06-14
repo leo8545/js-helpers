@@ -41,11 +41,7 @@ const BaseHelpers = {
         return new Intl.NumberFormat().format(Math.round(money*10)/10);
     },
     prettifyMoney: function(n) {
-        if(n >= 1000000)
-            return this.prettifyMoneyUsingCommas(n/1000000)+'M';
-        if(n >= 1000)
-            return this.prettifyMoneyUsingCommas(n/1000)+'K';
-        return this.prettifyMoneyUsingCommas(n);
+        return Intl.NumberFormat('en', { notation: 'compact' }).format(n)
     },
     buildQueryFromObject: function(obj) {
         let str = [];
